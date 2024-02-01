@@ -2,14 +2,14 @@ package org.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        ApplicationContext context = SpringApplication.run(Main.class, args);
 
-        CustomerService customerService = customerService();
+        CustomerService customerService = context.getBean(CustomerService.class);
 
         int customerId = 3;
         double initialBalance = 27084;
@@ -26,10 +26,5 @@ public class Main {
         } else {
             System.out.println("Klient nie został znaleziony.");
         }
-    }
-
-    @Bean
-    public static CustomerService customerService() {
-        return new CustomerService(CustomerStorage.getInstance());
     }
 }
