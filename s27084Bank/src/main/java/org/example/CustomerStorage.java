@@ -1,9 +1,12 @@
 package org.example;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerStorage {
+@Component
+class CustomerStorage {
     private List<Customer> customers = new ArrayList<>();
 
     private static CustomerStorage customerStorage;
